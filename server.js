@@ -1,12 +1,11 @@
+//Require
 var express = require('express');
 var mongoose = require('mongoose');
 var app = express();
 
-
+//Middleware
 app.use(express.static('public'));
-
 mongoose.connect('mongodb://localhost:27017/dpla-app');
-
 mongoose.connection.once('open', function() {
   console.log('Connected to mongoD');
 });

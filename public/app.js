@@ -8,16 +8,16 @@ app.controller('BaseController', ['$http', function($http) {
 
   // function to get data from DPLA api:
   this.getData = function(searchQuery) {
-
+    console.log('getting '+searchQuery+' data');
     var ajaxUrl = 'http://api.dp.la/v2/items?q=' + searchQuery + '&sourceResource.type=image&page_size=25&api_key=7c4f10ae79cee82c4372d03dba940c74';
 
     $http({
       method: 'GET',
       url: ajaxUrl
-    }).then({
+    }).then(
       function(response) {
         // success
-        console.log(response);
+        console.log('getting response');
         controller.test = response.docs.object;
         console.log(controller.test);
       },
@@ -25,8 +25,7 @@ app.controller('BaseController', ['$http', function($http) {
         // failure
         console.log(response);
       }
-    }
-  )
+    )
 };
 
 }]); // end BaseController
