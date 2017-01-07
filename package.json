@@ -1,0 +1,23 @@
+{
+  "name": "dpla-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aauslander920/dpla-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aauslander920/dpla-app/issues"
+  },
+  "homepage": "https://github.com/Aauslander920/dpla-app#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.7.6"
+  }
+}
