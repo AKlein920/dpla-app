@@ -23,4 +23,11 @@ http://wagnermediaworks.com/wp-content/uploads/2017/01/Endeavor-Lion-1.png
 http://wagnermediaworks.com/wp-content/uploads/2017/01/endeavor-Mountain-1.png
 
 http://wagnermediaworks.com/wp-content/uploads/2017/01/endeavor-logo-text-only-1.png
+
+Final Logo:
+http://wagnermediaworks.com/wp-content/uploads/2017/01/endeavor-Mountain-Final.png
+
+
+
+
 >>>>>>> Stashed changes
