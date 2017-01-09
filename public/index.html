@@ -11,9 +11,9 @@
 
     <h1>DPLA Topics</h1>
 
-    <ul ng-if="base.load">
-      <li ng-repeat="item in base.dataGroup">
-        <img src="{{item}}" alt="">
+    <ul>
+      <li ng-if="base.load" ng-repeat="item in base.dataGroup">
+        <img src={{item}} alt="">
       </li>
     </ul>
 

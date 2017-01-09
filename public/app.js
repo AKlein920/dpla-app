@@ -3,8 +3,7 @@ var app = angular.module('dpla-app', []);
 var randomArr = ['basketball', 'warhol', 'beatles', 'mlk', 'corn','tucson', 'river', 'telescope', 'protein', 'concrete', 'modern', 'contemporary', 'horror', 'child', 'sleep', 'invent', 'electric', 'arm', 'touch', 'steel', 'titanium', 'knife', 'gun', 'rum', 'doctor', 'hurt', 'duck', 'monk', 'fool', 'funk', 'hip+hop', 'happy', 'sad', 'slum', 'carrot', 'cartoon', 'steam', 'explode', 'cart', 'gang', 'teal', 'bank', 'slime', 'tree', 'petrified', 'mason', 'flame', 'knit', 'shock', 'hero', 'icarus', 'stark', 'curious', 'captivate', 'flag', 'fail', 'dead', 'lizard', 'snake', 'fluffy', 'gentleman', 'toilet', 'bike', 'duomo', 'tobacco', 'coat', 'hour+glass', 'letter+opener', 'globe', 'jar', 'camera', 'chewing+gum', 'ornament', 'stolen', 'enemy', 'saga', 'journey', 'panama', 'technology', 'goat', 'atmosphere', 'jump', 'coral', 'extinct', 'thrift', 'colorful', 'vivid', 'sacred', 'beer', 'mountain', 'drug', 'mosaic', 'graffiti', 'bridge', 'structure', 'challenge', 'impressive', 'race', 'slide', 'jewelry', 'exquisite', 'facet', 'ruby', 'stubborn', 'inspire', 'meal', 'album', 'arctic', 'elite', 'priceless', 'egypt'];
 
 app.controller('BaseController', ['$http', function($http) {
-  this.load = false;
-  var dataGroup = [];
+  this.dataGroup = [];
   var controller = this;
 
   // need a function for randomly generated keyword to begin search
@@ -47,9 +46,17 @@ app.controller('BaseController', ['$http', function($http) {
         controller.image = response.data.docs[Math.floor(Math.random()*25)].object;
         console.log(typeof controller.image);
         if(typeof controller.image === 'string'){
-          dataGroup.push(controller.image);
+          controller.dataGroup.push(controller.image);
+          if(controller.dataGroup.length >= 20){
+            controller.load = true;
+          }
+          console.log(controller.dataGroup.length);
+          console.log(controller.load);
         } else {
-          dataGroup.push(controller.image[0]);
+          controller.dataGroup.push(controller.image[0]);
+          if(controller.dataGroup.length >= 20){
+            controller.load = true;
+          }
         };
 
         // console.log(controller.image);
@@ -64,14 +71,15 @@ app.controller('BaseController', ['$http', function($http) {
   this.getAllData = function(){
   for(var i = 0; i < 25; i++){
     this.getData();
-    if(dataGroup.length >= 25){
+    if(this.dataGroup.length >= 20){
       this.load = true;
     }
   }
-  console.log(dataGroup);
+  console.log(this.dataGroup);
+  console.log(this.load);
   }
 
 
   this.getAllData();
-
+  console.log(this.load);
 }]); // end BaseController
