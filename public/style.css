@@ -1,6 +1,10 @@
+h1 {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
 .box {
   width: 100px;
   height: 100px;
-  background-color: gray;
+  background-color: #c5d2d26;
   display: inline-block;
 }
