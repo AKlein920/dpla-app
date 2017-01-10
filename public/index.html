@@ -7,9 +7,28 @@
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js'></script>
     <script src='app.js'></script>
      <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300" rel="stylesheet" type="text/css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body ng-controller='BaseController as base'>
-
+    <nav>
+      <div class="header">
+        <div class="search">
+          <input type="search" placeholder="search the archive..." />
+          <button> <i class="material-icons">search</i></button>
+        </div>
+        <div class="logo">
+          <img src="http://wagnermediaworks.com/wp-content/uploads/2017/01/EndeavorLogoTransparent.png" alt="Endeavor Logo">
+        </div>
+        <div class="bar">
+          <div class="main-nav nav-1"><a>DISCOVER </a></div>
+          <div class="main-nav nav-2"><a> MY FAVORITES </a></div>
+          <div class="main-nav nav-3"><a> TOPIC: </a></div>
+          <div class="main-nav nav-4"><a> REGISTER / LOG IN </a></div>
+          <div class="main-nav nav-5"><a> SIGN OUT </a></div>
+        </div>
+      </div>
+    </nav>
+    <div class="content">
     <h1>DPLA Topics</h1>
 
     <ul>
@@ -34,6 +53,11 @@
     <div ng-click='base.getData()' class="box">
       Kitten
     </div> -->
-
+  </div>
+  <div class="footer">
+    <a>© 2017 Endeavor. Made with care by <a href="https://github.com/Aauslander920">Abi</a>
+    <a href="https://github.com/cardosi">Cam</a>
+    <a href="https://github.com/kathrynehlmann">and Kathryn.</a><a> With special thanks to the </a><a href="https://dp.la/">Digital Public Library of America.</a>
+  </div>
   </body>
 </html>
