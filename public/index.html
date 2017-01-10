@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css" media="screen">
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js'></script>
     <script src='app.js'></script>
-     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300" rel="stylesheet" type="text/css">
+     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300" rel="stylesheet" type="text/css"/>
   </head>
   <body ng-controller='BaseController as base'>
 
@@ -17,7 +17,7 @@
         <img src={{base.showImage(item)}} alt="">
         <h3>{{$index}}</h3>
         <button ng-click="base.selector($index)">INFO</button>
-        <button>MORE LIKE THIS</button>
+        <button ng-click="base.getAllSimilar($index)">MORE LIKE THIS</button>
       </li>
     </ul>
 
@@ -25,15 +25,5 @@
       <h2>More Info</h2>
       <h3>{{base.titlePath(base.dataGroup[base.selected])}}</h3>
     </div>
-
-
-    <!-- <div ng-click='base.getData()' class="box">
-      Puppy
-    </div>
-
-    <div ng-click='base.getData()' class="box">
-      Kitten
-    </div> -->
-
   </body>
 </html>

@@ -6,8 +6,9 @@ app.controller('BaseController', ['$http', function($http) {
   this.imageGroup = []; //Array of image URLs
   this.dataGroup = []; //Array of items containing all associated json data
   var controller = this;
+  this.queryGroup = [];
 
-  // need a function for randomly generated keyword to begin search
+// need a function for randomly generated keyword to begin search
 
 // Function to get single item from random search qurey
   this.getData = function() {
@@ -16,17 +17,15 @@ app.controller('BaseController', ['$http', function($http) {
       return result;
     }
     this.random = this.randomize()
-    this.queryGroup = [];
     this.queryGroup.push(this.random);
     $http({
       method: 'GET',
-      url: 'http://api.dp.la/v2/items?q=' + this.random + '&sourceResource.type=image&page_size=25&api_key=7c4f10ae79cee82c4372d03dba940c74'
+      url: 'http://api.dp.la/v2/items?q=' + this.random + '&sourceResource.type=image&page_size=100&api_key=7c4f10ae79cee82c4372d03dba940c74'
     }).then(
       function(response) {
         // success
-        controller.item = response.data.docs[Math.floor(Math.random()*25)];
+        controller.item = response.data.docs[Math.floor(Math.random()*100)];
         controller.image = controller.item.object;
-        console.log(typeof controller.image);
         controller.dataGroup.push(controller.item);
         if(controller.dataGroup.length >= 20){
           controller.load = true;
@@ -42,21 +41,16 @@ app.controller('BaseController', ['$http', function($http) {
 //Function to get a single item similar to clicked item
   this.getSimilar = function(index){
     this.load = false;
-    this.randomize = function(){
-      var result = randomArr[Math.floor(Math.random()*randomArr.length)];
-      return result;
-    }
-    this.query = this.qureyGroup[index];
+    this.query = this.queryGroup[index];
     $http({
       method: 'GET',
-      url: 'http://api.dp.la/v2/items?q=' + this.query + '&sourceResource.type=image&page_size=25&api_key=7c4f10ae79cee82c4372d03dba940c74'
+      url: 'http://api.dp.la/v2/items?q=' + this.query + '&sourceResource.type=image&page_size=100&api_key=7c4f10ae79cee82c4372d03dba940c74'
     }).then(
       function(response) {
         // success
-        controller.item = response.data.docs[Math.floor(Math.random()*25)];
-        controller.image = controller.item.object;
-        console.log(typeof controller.image);
-        controller.dataGroup.push(controller.item);
+        controller.similarItem = response.data.docs[Math.floor(Math.random()*100)];
+        controller.similarImage = controller.similarItem.object;
+        controller.dataGroup.push(controller.similarItem);
         if(controller.dataGroup.length >= 20){
           controller.load = true;
         }
@@ -71,7 +65,7 @@ app.controller('BaseController', ['$http', function($http) {
 
 //Function to get multiple items from different search queries
   this.getAllData = function(){
-  for(var i = 0; i < 25; i++){
+  for(var i = 0; i < 20; i++){
     this.getData();
     if(this.dataGroup.length >= 20){
       this.load = true;
@@ -79,22 +73,22 @@ app.controller('BaseController', ['$http', function($http) {
   }
   console.log(this.dataGroup);
   console.log(this.load);
+  console.log('Query Group '+ this.queryGroup)
   }
 
 //Function to get multiple iItems similar to clicked item
-  this.getAllSimilar = function(){
+  this.getAllSimilar = function(index){
     this.dataGroup = []; //clear existing data from array
     this.load = false; //remove existing images from DOM
-    for(var i = 0; i < 25; i++){
-      this.getSimilar();
+    for(var i = 0; i < 20; i++){
+      this.getSimilar(index);
       if(this.dataGroup.length >= 20){
         this.load = true;
       }
     }
     console.log(this.dataGroup);
     console.log(this.load);
-    }
-  }
+  };
 
 //Function to account for the fact that the title could be stored in two different places
   this.titlePath = function(item){
@@ -103,7 +97,7 @@ app.controller('BaseController', ['$http', function($http) {
     } else {
       return item.admin.sourceResource.title;
     }
-  }
+  };
 
 //Function to identify the clicked item by index in the ng-repeat
   this.selector = function(index){
