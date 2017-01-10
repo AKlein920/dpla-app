@@ -11,6 +11,9 @@ http://api.dp.la/v2/items?q=art&sourceResource.type=image&page_size=25&api_key=7
 Query for Art Images from after the year 2010
 http://api.dp.la/v2/items?q=art&sourceResource.type=image&sourceResource.date.after=2010&page_size=25&api_key=7c4f10ae79cee82c4372d03dba940c74
 
+Query for Art Images with 25 results excluding those from a certain collection identified by id:
+http://api.dp.la/v2/items?q=art&sourceResource.type=image&sourceResource.collection.id=NOT%20ccf588427fcc1b61942b484e7d73062a&page_size=25&api_key=7c4f10ae79cee82c4372d03dba940c74
+
 Randomizer: use an array of random items to generate search terms, but also generate a random number to select one of the results between 1 and 25 (or any number of results that we’ve set)
 
 <!-- Fixed array so that quotes around strings show/function properly: -->
