@@ -9,6 +9,7 @@
      <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300" rel="stylesheet" type="text/css">
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300" rel="stylesheet" type="text/css"/>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   </head>
   <body ng-controller='BaseController as base'>
@@ -33,14 +34,14 @@
     <div class="content">
     <h1>DPLA Topics</h1>
 
-    <ul>
-      <li ng-if="base.load" ng-repeat="item in base.dataGroup track by $index">
-        <img src={{base.showImage(item)}} alt="">
-        <h3>{{$index}}</h3>
+
+      <div class='grid-item' ng-if="base.load" ng-repeat="item in base.dataGroup track by $index">
+        <img class='grid-item-img' src={{base.showImage(item)}} alt="">
+        <p>{{$index}}</p>
         <button ng-click="base.selector($index)">INFO</button>
         <button ng-click="base.getAllSimilar($index)">MORE LIKE THIS</button>
-      </li>
-    </ul>
+      </div>
+
 
     <div ng-if="base.selected < 30">
       <h2>More Info</h2>
