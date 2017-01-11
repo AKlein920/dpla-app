@@ -16,6 +16,7 @@ html {
 nav {
   background-color: white;
   display: block;
+  margin-bottom: -20px;
 }
 
 nav ul li {
@@ -28,7 +29,7 @@ nav ul li:hover {
 }
 
 h1 {
-  display: top;
+  margin-top: 0px;
   font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -59,18 +60,22 @@ h1 {
 .grid-item {
   display: inline-block;
   background-color: gray;
-  border: 1px solid black;
   border-radius: 5%;
   margin: 1%;
   height: 200px;
   width: 200px;
+  box-shadow: 10px 10px 16px -4px rgba(0,0,0,0.75);
 }
 
 .grid-item-img {
-  height: 70%;
+  height: 62%;
   width: auto;
   max-width: 95%;
-  margin-top: .5%;
+  margin-top: 2%;
+}
+
+.favoriteBtn {
+  cursor: pointer
 }
 
 .footer {

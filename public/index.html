@@ -41,7 +41,9 @@
         <p>{{}}</p>
         <button ng-click="base.selector($index)">INFO</button>
         <button ng-click="base.getAllSimilar($index)">MORE LIKE THIS</button>
-        <button ng-click="base.addFav($index)">FAVORITE</button>
+        <div class='favoriteBtn' ng-click="base.addFav($index)">
+          <i class="material-icons">add_circle</i>Add to favorites
+        </div>
       </li>
     </ul>
       </div>
