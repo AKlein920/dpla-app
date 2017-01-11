@@ -69,13 +69,19 @@ h1 {
   margin: 1%;
   height: 200px;
   width: 200px;
-  box-shadow: 10px 10px 12px -4px rgba(128, 128, 124, 0.25);
+  /*box-shadow: 10px 10px 12px -4px rgba(128, 128, 124, 0.25);*/
+}
+
+.img-holder {
+  height: 62%;
+  width: 95%;
 }
 
 .grid-item-img {
-  height: 62%;
+  height: auto;
+  max-height: 100%;
   width: auto;
-  max-width: 95%;
+  max-width: 100%;
   margin-top: 2%;
 }
 
