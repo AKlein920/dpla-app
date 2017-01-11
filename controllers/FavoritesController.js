@@ -9,7 +9,7 @@ router.get('/', function(req, res){
   });
 });
 
-
+//NEW FAVORITE ROUTE
 router.post('/', function(req, res){
   Favorites.create(req.body, function(err, createdFavorite){
     res.json(createdFavorite);
