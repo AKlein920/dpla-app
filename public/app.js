@@ -178,6 +178,25 @@ app.controller('BaseController', ['$http', function($http) {
     )
   }
 
+  //Function to add User
+  this.logIn = function(){
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/sessions/new',
+      data: {
+        username: this.userName,
+        password: this.userPassword,
+      }
+    }).then(
+      function(response){
+        console.log('creating user');
+      },
+      function(response){
+
+      }
+    )
+  }
+
   this.getAllData();
   console.log(this.load);
   console.log(this.dataGroup);
