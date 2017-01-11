@@ -37,7 +37,7 @@
     <div class="content">
       <h1>DPLA Topics</h1>
       <div class='grid-item' ng-if="base.load" ng-repeat="item in base.dataGroup track by $index">
-        <img class='grid-item-img' src={{base.showImage(item)}} alt="">
+        <img class='grid-item-img' src={{base.showImage(item)}} alt="Oops, this image doesn't exist anymore">
         <p>{{}}</p>
         <button ng-click="base.selector($index)">INFO</button>
         <button ng-click="base.getAllSimilar($index)">MORE LIKE THIS</button>
@@ -54,8 +54,8 @@
   </div>
 
   <div class="footer">
-    <a>© 2017 Endeavor. Made with care by <a href="https://github.com/Aauslander920">Abi </a>
-    <a href="https://github.com/cardosi">Cam </a>
+    <a>© 2017 Endeavor. Made with care by <a href="https://github.com/Aauslander920">Abi</a>
+    <a href="https://github.com/cardosi">Cam</a>
     <a href="https://github.com/kathrynehlmann"> and Kathryn.</a><a> With special thanks to the </a><a href="https://dp.la/">Digital Public Library of America.</a>
   </div>
 
