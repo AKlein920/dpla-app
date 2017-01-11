@@ -7,6 +7,8 @@ app.controller('BaseController', ['$http', function($http) {
   this.dataGroup = []; //Array of items containing all associated json data
   var controller = this;
   this.queryGroup = [];
+  this.userName = "User Name";
+  this.userPassword = "Password";
 
 
 // Function to get single item from random search query
@@ -177,8 +179,7 @@ app.controller('BaseController', ['$http', function($http) {
       }
     )
   }
-
-  //Function to add User
+//Function to Log In
   this.logIn = function(){
     $http({
       method: 'GET',
@@ -189,7 +190,27 @@ app.controller('BaseController', ['$http', function($http) {
       }
     }).then(
       function(response){
+        console.log('logging in');
+      },
+      function(response){
+
+      }
+    )
+  }
+
+//Function to Add User
+  this.addUser = function(){
+    $http({
+      method: 'POST',
+      url: 'http://localhost:3000/users',
+      data: {
+        userName: this.userName,
+        userPassword: this.userPassword,
+      }
+    }).then(
+      function(response){
         console.log('creating user');
+        console.log(response);
       },
       function(response){
 
