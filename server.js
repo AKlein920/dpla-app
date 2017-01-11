@@ -1,16 +1,16 @@
 //Require
 var express = require('express');
-var mongoose = require('mongoose');
 var app = express();
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 //Middleware
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-// var favoritesController = require('./controllers/FavoritesController.js');
-// app.use('/favorites', favoritesController);
-//
+var favoritesController = require('./controllers/FavoritesController.js');
+app.use('/favorites', favoritesController);
+
 // var sessionsController = require('./controllers/SessionsController.js');
 // app.use('/sessions', sessionsController);
 //

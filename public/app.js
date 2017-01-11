@@ -114,6 +114,40 @@ app.controller('BaseController', ['$http', function($http) {
     }
   }
 
+//Function to get item for favorites
+  this.getFav = function(){
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/'
+    }).then(
+      function(response){
+        console.log('getting item for favorites');
+      },
+      function(response){
+
+      }
+    )
+  }
+
+//Function to add favorite to DB
+  this.addFav = function(index){
+    $http({
+      method: 'POST',
+      url: 'http://localhost:3000/favorites',
+      data: {
+        item: this.dataGroup[index]
+      }
+    }).then(
+      function(response){//success
+        console.log('Posting Item');
+        console.log(response);
+      },
+      function(response){//fail
+
+      }
+    )
+  }
+
   this.getAllData();
   console.log(this.load);
   console.log(this.dataGroup);
