@@ -20,7 +20,7 @@ app.controller('BaseController', ['$http', function($http) {
     this.queryGroup.push(this.random);
     $http({
       method: 'GET',
-      url: 'http://api.dp.la/v2/items?q=' + this.random + '&sourceResource.type=image&page_size=100&api_key=7c4f10ae79cee82c4372d03dba940c74'
+      url: 'https://api.dp.la/v2/items?q=' + this.random + '&sourceResource.type=image&page_size=100&api_key=7c4f10ae79cee82c4372d03dba940c74'
     }).then(
       function(response) {
         // success
