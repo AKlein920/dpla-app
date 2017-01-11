@@ -10,54 +10,44 @@
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300" rel="stylesheet" type="text/css"/>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
   </head>
+
   <body ng-controller='BaseController as base'>
-    <nav>
-      <div class="header">
-        <div class="search">
+
+
+        <!-- <div class="search">
           <input type="search" placeholder="search the archive..." />
           <button> <i class="material-icons">search</i></button>
-        </div>
+        </div> -->
+
         <div class="logo">
           <img src="http://wagnermediaworks.com/wp-content/uploads/2017/01/EndeavorLogoTransparent.png" alt="Endeavor Logo">
         </div>
-        <div class="bar">
-          <div class="main-nav nav-1"><a>DISCOVER </a></div>
-          <div class="main-nav nav-2"><a> MY FAVORITES </a></div>
-          <div class="main-nav nav-3"><a> TOPIC: </a></div>
-          <div class="main-nav nav-4"><a> REGISTER / LOG IN </a></div>
-          <div class="main-nav nav-5"><a> SIGN OUT </a></div>
-        </div>
-      </div>
-    </nav>
+
+          <nav>
+            <ul class='nav nav-justified'>
+              <li>DISCOVER</li>
+              <li>MY FAVORITES</li>
+              <li>REGISTER</li>
+              <li>LOG IN</li>
+              <li>SIGN OUT</li>
+            </ul>
+          </nav>
+
     <div class="content">
-    <h1>DPLA Topics</h1>
-
-
+      <h1>DPLA Topics</h1>
       <div class='grid-item' ng-if="base.load" ng-repeat="item in base.dataGroup track by $index">
         <img class='grid-item-img' src={{base.showImage(item)}} alt="">
-        <p>{{$index}}</p>
+        <p>{{}}</p>
         <button ng-click="base.selector($index)">INFO</button>
         <button ng-click="base.getAllSimilar($index)">MORE LIKE THIS</button>
       </div>
-
-
     <div ng-if="base.selected < 30">
       <h2>More Info</h2>
       <h3>{{base.titlePath(base.dataGroup[base.selected])}}</h3>
     </div>
-
-
-
-    <!-- <div ng-click='base.getData()' class="box">
-      Puppy
-    </div>
-
-    <div ng-click='base.getData()' class="box">
-      Kitten
-    </div> -->
   </div>
+
   <div class="footer">
     <a>© 2017 Endeavor. Made with care by <a href="https://github.com/Aauslander920">Abi </a>
     <a href="https://github.com/cardosi">Cam </a>

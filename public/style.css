@@ -1,5 +1,7 @@
 *, *::before, *:after {
   box-sizing: inherit;
+  margin: 0 auto;
+  text-align: center;
 }
 
 html {
@@ -7,11 +9,30 @@ html {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+.logo {
+  margin-bottom: 2%;
+}
+
+nav {
+  background-color: white;
+  display: block;
+}
+
+nav ul li {
+  padding: 2%;
+}
+
+nav ul li:hover {
+  background: gray;
+  color: white;
+}
+
 h1 {
+  display: top;
   font-family: 'Nunito Sans', sans-serif;
 }
 
-.search {
+/*.search {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
@@ -19,49 +40,15 @@ h1 {
   padding-left: 450px;
   padding-bottom: 15px;
 
-}
+}*/
 
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 10px;
-  padding-bottom: 25px;
-  margin: auto;
-}
-
-
-.bar {
+/*.bar {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   margin: 10px;
-}
-
-.box {
-  width: 100px;
-  height: 100px;
-  background-color: #c5d2d6;
-  display: inline-flex;
-}
-
-.nav-1 {
-  padding: 20px;
-}
-
-.nav-2 {
-  padding: 20px;
-}
-
-.nav-3 {
-  padding: 20px;
-}
-
-.nav-4 {
-  padding: 20px;
-}
+}*/
 
 .content {
   background-color: #c5d2d6;
@@ -71,7 +58,9 @@ h1 {
 
 .grid-item {
   display: inline-block;
+  background-color: gray;
   border: 1px solid black;
+  border-radius: 5%;
   margin: 1%;
   height: 200px;
   width: 200px;
@@ -79,7 +68,9 @@ h1 {
 
 .grid-item-img {
   height: 70%;
-  width: 95%;
+  width: auto;
+  max-width: 95%;
+  margin-top: .5%;
 }
 
 .footer {
