@@ -79,6 +79,10 @@ h1 {
   margin-top: 2%;
 }
 
+.grid-item-img:hover {
+  opacity: 0.5;
+  filter: alpha(opacity=50); /*for Internet Exploerer 8 and earlier */
+}
 
 .favoriteBtn {
   cursor: pointer
