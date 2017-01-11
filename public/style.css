@@ -73,21 +73,55 @@ h1 {
 }
 
 .img-holder {
+  z-index: 1;
+  opacity: 1;
   height: 62%;
   width: 95%;
 }
 
+.img-holder:hover {
+  z-index: 0;
+  cursor: pointer;
+  opacity: .5;
+  border-radius: 5%;
+  background: #66888e;
+  box-shadow: 10px 10px 12px -4px;
+}
+
 .grid-item-img {
   height: auto;
-  max-height: 100%;
+  max-height: 98%;
   width: auto;
   max-width: 100%;
   margin-top: 2%;
 }
 
-
 .favoriteBtn {
-  cursor: pointer
+  padding: .5em;
+  display: inline-block;
+  cursor: pointer;
+  width: 35%;
+  border-radius: 50%;
+  margin-top: 2%;
+}
+
+.exploreBtn {
+  display: inline-block;
+  cursor: pointer;
+  padding: .5em;
+  width: 35%;
+  border-radius: 50%;
+  margin-top: 2%;
+}
+
+.favoriteBtn:hover {
+  background-color: #f66e14;
+  color: white;
+}
+
+.exploreBtn:hover {
+  background-color: #f66e14;
+  color: white;
 }
 
 .footer {
