@@ -30,6 +30,7 @@ nav ul li:hover {
   background: #80807c;
   opacity: .5;
   color: white;
+  cursor: pointer;
 }
 
 h1 {
