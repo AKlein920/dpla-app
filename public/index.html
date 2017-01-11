@@ -55,6 +55,7 @@
       <h1>DPLA Topics</h1>
 
       <div class='grid-item' ng-if="base.load" ng-repeat="item in base.dataGroup track by $index">
+
         <div ng-click="base.selector($index)" data-toggle='modal' data-target='#infoModal' class="img-holder">
           <img class='grid-item-img' src={{base.showImage(item)}} alt="Oops, this image doesn't exist anymore" />
         </div>
@@ -70,17 +71,19 @@
                 {{base.titlePath(base.dataGroup[base.selected])}}
               </div>
               <div class="modal-footer">
-                <button type="button" class='btn btn-default' data-dismiss='modal'>Close</button>
+                <form class="" action="index.html" method="post">
+                  <button type="submit" class='btn btn-default' data-dismiss='modal'>Close</button>
+                </form>
               </div>
             </div>
           </div>
         </div>
 
 
-        <button ng-click="base.selector($index)">INFO</button>
-        <button ng-click="base.getAllSimilar($index)">MORE LIKE THIS</button>
+        <div class='exploreBtn' ng-click="base.getAllSimilar($index)"><i class="material-icons">keyboard_arrow_right</i>Explore</div>
+
         <div class='favoriteBtn' ng-click="base.addFav($index)">
-          <i class="material-icons">add_circle</i>Add to favorites
+          <i class="material-icons">favorite_border</i>Favorite
         </div>
       </div>
 
