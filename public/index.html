@@ -10,6 +10,8 @@
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300" rel="stylesheet" type="text/css"/>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
 
   <body ng-controller='BaseController as base'>
@@ -21,7 +23,7 @@
         </div> -->
 
         <div class="logo">
-          <img src="http://wagnermediaworks.com/wp-content/uploads/2017/01/EndeavorLogoTransparent.png" alt="Endeavor Logo">
+          <img src="images/EndeavorLogoTransparent.png" alt="Endeavor Logo">
         </div>
 
           <nav>
@@ -51,27 +53,49 @@
 
     <div class="content">
       <h1>DPLA Topics</h1>
+
       <div class='grid-item' ng-if="base.load" ng-repeat="item in base.dataGroup track by $index">
-        <img class='grid-item-img' src={{base.showImage(item)}} alt="">
-        <p>{{}}</p>
+        <div ng-click="base.selector($index)" data-toggle='modal' data-target='#infoModal' class="img-holder">
+          <img class='grid-item-img' src={{base.showImage(item)}} alt="Oops, this image doesn't exist anymore" />
+        </div>
+
+        <div ng-if="base.selected < 30"class="modal fade" id='infoModal' tabindex="-1" role='dialog' aria-labelledby='infoModalLabel'>
+          <div class="modal-dialog" role='document'>
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                <h4 class='modal-title' id='infoModalLabel'>More Info</h4>
+              </div>
+              <div class="modal-body">
+                {{base.titlePath(base.dataGroup[base.selected])}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class='btn btn-default' data-dismiss='modal'>Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <button ng-click="base.selector($index)">INFO</button>
         <button ng-click="base.getAllSimilar($index)">MORE LIKE THIS</button>
         <div class='favoriteBtn' ng-click="base.addFav($index)">
           <i class="material-icons">add_circle</i>Add to favorites
         </div>
-      </li>
-    </ul>
       </div>
-    <div ng-if="base.selected < 30">
+
+    <!-- <div ng-if="base.selected < 30">
       <h2>More Info</h2>
       <h3>{{base.titlePath(base.dataGroup[base.selected])}}</h3>
-    </div>
+    </div> -->
   </div>
 
   <div class="footer">
-    <a>© 2017 Endeavor. Made with care by <a href="https://github.com/Aauslander920">Abi </a>
-    <a href="https://github.com/cardosi">Cam </a>
-    <a href="https://github.com/kathrynehlmann"> and Kathryn.</a><a> With special thanks to the </a><a href="https://dp.la/">Digital Public Library of America.</a>
+    <div>
+      <a>© 2017 Endeavor. </a><a> Made with care by <a href="https://github.com/Aauslander920">Abi </a>
+      <a href="https://github.com/cardosi">Cam </a>
+      <a href="https://github.com/kathrynehlmann"> and Kathryn.</a><a> With special thanks to the </a><a href="https://dp.la/">Digital Public Library of America.</a>
+    </div>
   </div>
 
   </body>
