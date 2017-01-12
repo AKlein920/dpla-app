@@ -22,6 +22,7 @@ router.put('/favorites', function(req, res){
     foundUser.favoritesArray.push(req.body.item);
     foundUser.save(function(err, savedUser){
       console.log(foundUser);
+      res.json(savedUser);
     });
   });
 });
