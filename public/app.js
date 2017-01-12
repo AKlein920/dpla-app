@@ -10,6 +10,8 @@ app.controller('BaseController', ['$http', function($http) {
   this.queryGroup = [];
   this.userName = "User Name";
   this.userPassword = "Password";
+  this.loggedIn = false;
+  this.userNow = null;
 
 
 // Function to get single item from random search query
@@ -195,20 +197,6 @@ app.controller('BaseController', ['$http', function($http) {
     }
   }
 
-// //Function to get item for favorites -- Probably not using this
-//   this.getFav = function(){
-//     $http({
-//       method: 'GET',
-//       url: 'http://localhost:3000/'
-//     }).then(
-//       function(response){ // success
-//         console.log('getting item for favorites');
-//       },
-//       function(response){ // failure
-//       }
-//     )
-//   }
-
 //Function to add favorite to user collection
   this.addFav = function(index){
     $http({
@@ -240,9 +228,12 @@ app.controller('BaseController', ['$http', function($http) {
     }).then(
       function(response){
         console.log('logging in');
-        console.log(response);
+        console.log(response.config.data.username);
         controller.userName = null;
         controller.userPassword = null;
+        controller.loggedIn = true;
+        controller.userNow = response.config.data.username;
+
       },
       function(response){
 

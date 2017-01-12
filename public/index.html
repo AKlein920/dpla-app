@@ -25,7 +25,7 @@
         <div class="logo">
           <img src="images/EndeavorLogoTransparent.png" alt="Endeavor Logo">
         </div>
-
+        <h2 ng-if="base.loggedIn">Hello {{base.userNow}}</h2>
           <nav>
             <ul class='nav nav-justified'>
               <li ng-click="base.getAllData()">DISCOVER</li>
