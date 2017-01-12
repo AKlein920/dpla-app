@@ -2,11 +2,14 @@ var app = angular.module('dpla-app', []);
 
 var randomArr = ['kitten', 'cute', 'puppy', 'basketball', 'warhol', 'beatles', 'mlk', 'corn','tucson', 'river', 'telescope', 'protein', 'concrete', 'modern', 'contemporary', 'horror', 'child', 'sleep', 'invent', 'electric', 'arm', 'touch', 'steel', 'titanium', 'knife', 'gun', 'rum', 'doctor', 'hurt', 'duck', 'monk', 'fool', 'funk', 'hip+hop', 'happy', 'sad', 'slum', 'carrot', 'cartoon', 'steam', 'explode', 'cart', 'gang', 'teal', 'bank', 'slime', 'tree', 'petrified', 'mason', 'flame', 'knit', 'shock', 'hero', 'icarus', 'stark', 'curious', 'captivate', 'flag', 'fail', 'dead', 'lizard', 'snake', 'fluffy', 'gentleman', 'toilet', 'bike', 'duomo', 'tobacco', 'coat', 'hour+glass', 'letter+opener', 'globe', 'jar', 'camera', 'chewing+gum', 'ornament', 'stolen', 'enemy', 'saga', 'journey', 'panama', 'technology', 'goat', 'atmosphere', 'jump', 'coral', 'extinct', 'thrift', 'colorful', 'vivid', 'sacred', 'beer', 'mountain', 'drug', 'mosaic', 'graffiti', 'bridge', 'structure', 'challenge', 'impressive', 'race', 'slide', 'jewelry', 'exquisite', 'facet', 'ruby', 'stubborn', 'inspire', 'meal', 'album', 'arctic', 'elite', 'priceless', 'egypt', 'jungle', 'safari', 'sherd', 'virgin islands', 'west indies', 'trade cards', 'castle', 'habit', 'circus'];
 
+
 app.controller('BaseController', ['$http', function($http) {
   this.imageGroup = []; //Array of image URLs
   this.dataGroup = []; //Array of items containing all associated json data
   var controller = this;
   this.queryGroup = [];
+  this.userName = "User Name";
+  this.userPassword = "Password";
 
 
 // Function to get single item from random search query
@@ -173,6 +176,44 @@ app.controller('BaseController', ['$http', function($http) {
         console.log(response);
       },
       function(response){//fail
+
+      }
+    )
+  }
+//Function to Log In
+  this.logIn = function(){
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/sessions/new',
+      data: {
+        username: this.userName,
+        password: this.userPassword,
+      }
+    }).then(
+      function(response){
+        console.log('logging in');
+      },
+      function(response){
+
+      }
+    )
+  }
+
+//Function to Add User
+  this.addUser = function(){
+    $http({
+      method: 'POST',
+      url: 'http://localhost:3000/users',
+      data: {
+        userName: this.userName,
+        userPassword: this.userPassword,
+      }
+    }).then(
+      function(response){
+        console.log('creating user');
+        console.log(response);
+      },
+      function(response){
 
       }
     )
