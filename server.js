@@ -6,6 +6,20 @@ var session = require('express-session');
 
 var app = express();
 
+// port
+var port = process.env.PORT || 3000;
+var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost/dpla-app';
+
+// Database
+mongoose.connect(mongoDBURI);
+
+// mongoose.connect('mongodb://localhost:27017/dpla-app');
+mongoose.connection.once('open', function() {
+  console.log('Connected to mongoD');
+});
+
+
+
 app.use(session({
   secret: "feedmeseymour",
   resave: false,
@@ -40,11 +54,6 @@ app.get('/app', function(req, res){
   } else {
     res.send('no party');
   }
-});
-
-mongoose.connect('mongodb://localhost:27017/dpla-app');
-mongoose.connection.once('open', function() {
-  console.log('Connected to mongoD');
 });
 
 app.listen(3000, function() {
