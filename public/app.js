@@ -68,6 +68,8 @@ app.controller('BaseController', ['$http', function($http) {
     this.load = false;
     // store ONE value (random result from the randomArr), marked by its index, from the queryGroup array in a variable:
     this.query = this.queryGroup[index];
+    console.log(index);
+    console.log(this.queryGroup);
     // api call using the ONE value to get associated images from dpla:
     $http({
       method: 'GET',
@@ -94,6 +96,7 @@ app.controller('BaseController', ['$http', function($http) {
 //Function to get multiple items from different search queries
   this.getAllData = function(){
     this.dataGroup = [];
+    this.queryGroup = [];
     // run a for loop 20 times:
     for(var i = 0; i < 20; i++){
       // run the getData function 20 times:
@@ -118,26 +121,7 @@ app.controller('BaseController', ['$http', function($http) {
     // run a for loop 20 times:
     for(var i = 0; i < 20; i++){
       // run the getSimilar function 20 times:
-      this.getSimilar();
-      if(this.dataGroup.length >= 20){
-        this.load = true;
-      }
-    }
-    console.log(this.dataGroup);
-    console.log(this.load);
-  };
-
-
-//Function to Populate similar images
-  this.getAllSimilar = function(index){
-    // clear existing data from dataGroup array:
-    this.dataGroup = [];
-    // remove existing images from DOM:
-    this.load = false;
-    // run a for loop 20 times:
-    for(var i = 0; i < 20; i++){
-      // run the getSimilar function 20 times:
-      this.getSimilar();
+      this.getSimilar(index);
       if(this.dataGroup.length >= 20){
         this.load = true;
       }
