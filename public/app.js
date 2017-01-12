@@ -134,7 +134,7 @@ app.controller('BaseController', ['$http', function($http) {
       this.dataGroup = [];
       $http({
         method: 'GET',
-        url: 'https://localhost:3000/users/showfavorites'
+        url: 'http://localhost:3000/users/showfavorites'
       }).then(
         function(response) { // success
           console.log('app.js');
@@ -201,7 +201,7 @@ app.controller('BaseController', ['$http', function($http) {
   this.addFav = function(index){
     $http({
       method: 'PUT',
-      url: 'https://localhost:3000/users/favorites',
+      url: 'http://localhost:3000/users/favorites',
       data: {
         item: this.dataGroup[index]
       }
@@ -220,7 +220,7 @@ app.controller('BaseController', ['$http', function($http) {
   this.logIn = function(){
     $http({
       method: 'POST',
-      url: 'https://localhost:3000/sessions',
+      url: 'http://localhost:3000/sessions',
       data: {
         username: this.userName,
         password: this.userPassword,
@@ -245,7 +245,7 @@ app.controller('BaseController', ['$http', function($http) {
   this.logOut = function(){
     $http({
       method: 'DELETE',
-      url: 'https://localhost:3000/sessions'
+      url: 'http://localhost:3000/sessions'
     }).then(
       function(response){
         console.log('logged out');
@@ -261,7 +261,7 @@ app.controller('BaseController', ['$http', function($http) {
   this.addUser = function(){
     $http({
       method: 'POST',
-      url: 'https://localhost:3000/users',
+      url: 'http://localhost:3000/users',
       data: {
         userName: this.userName,
         userPassword: this.userPassword,
