@@ -10,6 +10,8 @@ app.controller('BaseController', ['$http', function($http) {
   this.queryGroup = [];
   this.userName = "User Name";
   this.userPassword = "Password";
+  this.loggedIn = false;
+  this.userNow = null;
 
 
 // Function to get single item from random search query
@@ -91,12 +93,13 @@ app.controller('BaseController', ['$http', function($http) {
 
 //Function to get multiple items from different search queries
   this.getAllData = function(){
-  // run a for loop 20 times:
-  for(var i = 0; i < 20; i++){
-    // run the getData function 20 times:
-    this.getData();
-    // check length of dataGroup array; if >= 20, load is TRUE:
-    if(this.dataGroup.length >= 20){
+    this.dataGroup = [];
+    // run a for loop 20 times:
+    for(var i = 0; i < 20; i++){
+      // run the getData function 20 times:
+      this.getData();
+      // check length of dataGroup array; if >= 20, load is TRUE:
+      if(this.dataGroup.length >= 20){
       this.load = true;
     }
   }
@@ -107,6 +110,52 @@ app.controller('BaseController', ['$http', function($http) {
 };
 
 // Function to get multiple items similar to clicked item:
+  this.getAllSimilar = function(index){
+    // clear existing data from dataGroup array:
+    this.dataGroup = [];
+    // remove existing images from DOM:
+    this.load = false;
+    // run a for loop 20 times:
+    for(var i = 0; i < 20; i++){
+      // run the getSimilar function 20 times:
+      this.getSimilar();
+      if(this.dataGroup.length >= 20){
+        this.load = true;
+      }
+    }
+    console.log(this.dataGroup);
+    console.log(this.load);
+  };
+
+//Function to get a user's favorites
+    this.getFavorites = function(index){
+      // set load to FALSE:
+      this.load = false;
+      this.dataGroup = [];
+      $http({
+        method: 'GET',
+        url: 'http://localhost:3000/users/showfavorites'
+      }).then(
+        function(response) { // success
+          console.log('app.js');
+          console.log(response.data.favoritesArray[0].object);
+          for(var i = 0; i < response.data.favoritesArray.length; i++){
+            controller.dataGroup.push(response.data.favoritesArray[i]);
+          };
+          console.log(controller.dataGroup);
+          if(controller.dataGroup.length === response.data.favoritesArray.length){
+            controller.load = true;
+          }
+          console.log(controller.load);
+
+        },
+        function(response) { // failure
+        }
+      )
+    };
+
+
+//Function to Populate a user's favorites
   this.getAllSimilar = function(index){
     // clear existing data from dataGroup array:
     this.dataGroup = [];
@@ -148,20 +197,6 @@ app.controller('BaseController', ['$http', function($http) {
     }
   }
 
-//Function to get item for favorites
-  this.getFav = function(){
-    $http({
-      method: 'GET',
-      url: 'http://localhost:3000/'
-    }).then(
-      function(response){ // success
-        console.log('getting item for favorites');
-      },
-      function(response){ // failure
-      }
-    )
-  }
-
 //Function to add favorite to user collection
   this.addFav = function(index){
     $http({
@@ -193,9 +228,12 @@ app.controller('BaseController', ['$http', function($http) {
     }).then(
       function(response){
         console.log('logging in');
-        console.log(response);
+        console.log(response.config.data.username);
         controller.userName = null;
         controller.userPassword = null;
+        controller.loggedIn = true;
+        controller.userNow = response.config.data.username;
+
       },
       function(response){
 
@@ -211,6 +249,7 @@ app.controller('BaseController', ['$http', function($http) {
     }).then(
       function(response){
         console.log('logged out');
+        controller.loggedIn = false;
       },
       function(response){
         console.log('failed to log out');

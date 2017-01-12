@@ -25,11 +25,11 @@
         <div class="logo">
           <img src="images/EndeavorLogoTransparent.png" alt="Endeavor Logo">
         </div>
-
+        <h2 ng-if="base.loggedIn">Hello {{base.userNow}}</h2>
           <nav>
             <ul class='nav nav-justified'>
-              <li>DISCOVER</li>
-              <li>MY FAVORITES</li>
+              <li ng-click="base.getAllData()">DISCOVER</li>
+              <li ng-click="base.getFavorites()">MY FAVORITES</li>
               <li data-toggle='modal' data-target='#registerModal'>REGISTER</li>
               <li data-toggle='modal' data-target='#loginModal'>LOG IN</li>
               <li ng-click="base.logOut()">SIGN OUT</li>
