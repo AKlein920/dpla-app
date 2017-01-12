@@ -1,6 +1,10 @@
 # dpla-app
+Link to Heroku live site: https://dpla-app.herokuapp.com/
+
+UX/UI:
 Initial color palette: http://wagnermediaworks.com/wp-content/uploads/2017/01/canoe-color-palette-with-pic.png
 
+===================================================================================
 Logo Possiblities:
 http://wagnermediaworks.com/wp-content/uploads/2017/01/Endeavor-Lion-1.png
 http://wagnermediaworks.com/wp-content/uploads/2017/01/endeavor-Mountain-1.png
@@ -12,7 +16,7 @@ Transparent:http://wagnermediaworks.com/wp-content/uploads/2017/01/EndeavorLogoT
 
 User stories:http://wagnermediaworks.com/wp-content/uploads/2017/01/Endeavor-User-Stories.pdf
 
-
+===================================================================================
 Query for Art Images that will return 25 images:
 http://api.dp.la/v2/items?q=art&sourceResource.type=image&page_size=25&api_key=7c4f10ae79cee82c4372d03dba940c74
 “object” property is direct link to image
