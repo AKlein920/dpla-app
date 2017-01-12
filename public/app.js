@@ -201,6 +201,21 @@ app.controller('BaseController', ['$http', function($http) {
     )
   }
 
+//Function to Sign Out
+  this.logOut = function(){
+    $http({
+      method: 'DELETE',
+      url: 'http://localhost:3000/sessions'
+    }).then(
+      function(response){
+        console.log('logged out');
+      },
+      function(response){
+        console.log('failed to log out');
+      }
+    )
+  }
+
 //Function to Add User
   this.addUser = function(){
     $http({
