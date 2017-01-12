@@ -1,5 +1,5 @@
 # dpla-app
-<h1>Link to Heroku live site: https://dpla-app.herokuapp.com/</h1>
+<h1>Heroku to see the app deployed: https://dpla-app.herokuapp.com/</h1>
 
 UX/UI:
 Initial color palette: http://wagnermediaworks.com/wp-content/uploads/2017/01/canoe-color-palette-with-pic.png
