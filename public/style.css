@@ -37,8 +37,14 @@ nav ul li:hover {
 h1 {
   margin-top: 0px;
   font-family: 'Nunito Sans', sans-serif;
-  color: white;
 }
+
+h2 {
+  margin-top: 0px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+
 
 /*.search {
   display: flex;
