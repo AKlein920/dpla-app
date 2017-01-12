@@ -194,6 +194,8 @@ app.controller('BaseController', ['$http', function($http) {
       function(response){
         console.log('logging in');
         console.log(response);
+        controller.userName = null;
+        controller.userPassword = null;
       },
       function(response){
 
@@ -229,6 +231,8 @@ app.controller('BaseController', ['$http', function($http) {
       function(response){
         console.log('creating user');
         console.log(response);
+        controller.userName = null;
+        controller.userPassword = null;
       },
       function(response){
 
