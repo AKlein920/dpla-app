@@ -69,7 +69,7 @@ app.controller('BaseController', ['$http', function($http) {
     // api call using the ONE value to get associated images from dpla:
     $http({
       method: 'GET',
-      url: 'http://api.dp.la/v2/items?q=' + this.query + '&sourceResource.type=image&page_size=100&api_key=7c4f10ae79cee82c4372d03dba940c74'
+      url: 'https://api.dp.la/v2/items?q=' + this.query + '&sourceResource.type=image&page_size=100&api_key=7c4f10ae79cee82c4372d03dba940c74'
     }).then(
       function(response) { // success
         // store a randomly pulled object from the response data in a variable:
