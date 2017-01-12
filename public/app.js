@@ -12,6 +12,7 @@ app.controller('BaseController', ['$http', function($http) {
   this.userPassword = "Password";
   this.loggedIn = false;
   this.userNow = null;
+  this.explore = false;
 
 
 // Function to get single item from random search query
@@ -55,7 +56,8 @@ app.controller('BaseController', ['$http', function($http) {
         // load is TRUE if the length of dataGroup array is greater than or equal to 20:
         if(controller.dataGroup.length >= 20){
           controller.load = true;
-        }
+        };
+        controller.explore = false;
       },
       function(response) { // failure
       }
@@ -83,7 +85,8 @@ app.controller('BaseController', ['$http', function($http) {
         // load is TRUE if the length of dataGroup array is greater than or equal to 20:
         if(controller.dataGroup.length >= 20){
           controller.load = true;
-        }
+        };
+        controller.explore = true;
       },
       function(response) { // failure
       }
