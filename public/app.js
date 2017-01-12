@@ -249,6 +249,7 @@ app.controller('BaseController', ['$http', function($http) {
     }).then(
       function(response){
         console.log('logged out');
+        controller.loggedIn = false;
       },
       function(response){
         console.log('failed to log out');
