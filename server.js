@@ -28,6 +28,20 @@ app.use('/sessions', sessionsController);
 var usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
+app.get('/', function(req, res){
+  res.send('Not Sure', {
+    currentUser: req.session.currentuser
+  });
+});
+
+app.get('/app', function(req, res){
+  if(req.session.currentuser){
+    res.send('the party');
+  } else {
+    res.send('no party');
+  }
+});
+
 mongoose.connect('mongodb://localhost:27017/dpla-app');
 mongoose.connection.once('open', function() {
   console.log('Connected to mongoD');

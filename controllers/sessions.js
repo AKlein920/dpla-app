@@ -7,8 +7,8 @@ router.get('/new', function(req, res){
 });
 
 router.post('/', function(req, res){
-  User.findOne({username: req.body.username}, function(err, foundUser){
-    if(req.body.password == foundUser.password){
+  User.findOne({username: req.body.userName}, function(err, foundUser){
+    if(req.body.userPassword == foundUser.userPassword){
       req.session.currentuser = foundUser;
       res.redirect('/');
     } else {

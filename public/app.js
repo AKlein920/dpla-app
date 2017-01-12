@@ -161,11 +161,11 @@ app.controller('BaseController', ['$http', function($http) {
     )
   }
 
-//Function to add favorite to DB
-  this.addFav = function(index){
+//Function to add favorite to user collection
+  this.addFav = function(id, index){
     $http({
-      method: 'POST',
-      url: 'http://localhost:3000/favorites',
+      method: 'PUT',
+      url: 'http://localhost:3000/users/favorites/'+id,
       data: {
         item: this.dataGroup[index]
       }
@@ -182,8 +182,8 @@ app.controller('BaseController', ['$http', function($http) {
 //Function to Log In
   this.logIn = function(){
     $http({
-      method: 'GET',
-      url: 'http://localhost:3000/sessions/new',
+      method: 'POST',
+      url: 'http://localhost:3000/sessions',
       data: {
         username: this.userName,
         password: this.userPassword,
@@ -191,6 +191,7 @@ app.controller('BaseController', ['$http', function($http) {
     }).then(
       function(response){
         console.log('logging in');
+        console.log(response);
       },
       function(response){
 
