@@ -27,4 +27,13 @@ router.put('/favorites', function(req, res){
   });
 });
 
+//GET USERS FAVORITES
+router.get('/showfavorites', function(req, res){
+  console.log('attempting to find favorites');
+  User.findById(req.session.currentuser._id, function(err, foundUser){
+    console.log(foundUser.favoritesArray);
+    res.json(foundUser);
+  })
+})
+
 module.exports = router;
