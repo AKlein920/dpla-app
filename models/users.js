@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
   userName: {type: String},
   userPassword: {type: String},
-  favoritesArray: [{type: Object}]
+  favoritesArray: []
 });
 
 var User = mongoose.model('User', userSchema);

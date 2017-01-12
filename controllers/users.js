@@ -15,11 +15,14 @@ router.post('/', function(req, res){
 });
 
 //ADD FAVORITE TO USER ROUTE
-router.put('/favorites/:id', function(req, res){
+router.put('/favorites', function(req, res){
   console.log('attempting to add fav');
-  User.findByIdAndUpdate(req.params.id, req.body, function(err, foundUser){
-    console.log(foundUser);
-    console.log(req.body);
+  User.findById(req.session.currentuser._id, function(err, foundUser){
+    console.log(req.body.item);
+    foundUser.favoritesArray.push(req.body.item);
+    foundUser.save(function(err, savedUser){
+      console.log(foundUser);
+    });
   });
 });
 

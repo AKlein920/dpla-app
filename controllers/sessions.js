@@ -8,13 +8,18 @@ router.get('/new', function(req, res){
 
 router.post('/', function(req, res){
   User.findOne({username: req.body.userName}, function(err, foundUser){
-    if(req.body.userPassword == foundUser.userPassword){
+    if(req.body.password == foundUser.userPassword){
+      console.log(foundUser);
       req.session.currentuser = foundUser;
       res.redirect('/');
     } else {
       res.send('wrong password');
+      console.log('wrong password');
+      console.log(req.body.password);
     }
   });
 });
+
+
 
 module.exports = router;

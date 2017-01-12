@@ -163,23 +163,24 @@ app.controller('BaseController', ['$http', function($http) {
   }
 
 //Function to add favorite to user collection
-  this.addFav = function(id, index){
+  this.addFav = function(index){
     $http({
       method: 'PUT',
-      url: 'http://localhost:3000/users/favorites/'+id,
+      url: 'http://localhost:3000/users/favorites',
       data: {
         item: this.dataGroup[index]
       }
     }).then(
-      function(response){//success
+      function(response){
         console.log('Posting Item');
         console.log(response);
       },
       function(response){//fail
-
+        console.log('failed to add fav');
+        console.log(response);
       }
     )
-  }
+  };
 //Function to Log In
   this.logIn = function(){
     $http({
