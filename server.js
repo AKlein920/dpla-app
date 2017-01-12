@@ -13,12 +13,12 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost/dpla-app';
 // Database
 mongoose.connect(mongoDBURI);
 
-// mongoose.connect('mongodb://localhost:27017/dpla-app');
-mongoose.connection.once('open', function() {
-  console.log('Connected to mongoD');
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('Connected to mongoDB');
 });
-
-
 
 app.use(session({
   secret: "feedmeseymour",
@@ -56,6 +56,6 @@ app.get('/app', function(req, res){
   }
 });
 
-app.listen(3000, function() {
-  console.log('Dpla app is listening');
+app.listen(port, function() {
+  console.log('Dpla app is listening on port: ' + port);
 });
