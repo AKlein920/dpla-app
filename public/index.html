@@ -93,7 +93,7 @@
       <div class='grid-item' ng-if="base.load" ng-repeat="item in base.dataGroup track by $index">
 
         <div ng-click="base.selector($index)" data-toggle='modal' data-target='#infoModal' class="img-holder">
-          <img class='grid-item-img' src={{base.showImage(item)}} alt="Oops, this image doesn't exist anymore" />
+          <img class='grid-item-img' src={{base.showImage(item)}} alt="Oops, this library shelf is empty" />
         </div>
 
         <div ng-if="base.selected < 30"class="modal fade" id='infoModal' tabindex="-1" role='dialog' aria-labelledby='infoModalLabel'>
