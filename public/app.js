@@ -127,35 +127,8 @@ app.controller('BaseController', ['$http', function($http) {
     console.log(this.load);
   };
 
-//Function to get a user's favorites
-    this.getFavorites = function(index){
-      // set load to FALSE:
-      this.load = false;
-      this.dataGroup = [];
-      $http({
-        method: 'GET',
-        url: 'http://localhost:3000/users/showfavorites'
-      }).then(
-        function(response) { // success
-          console.log('app.js');
-          console.log(response.data.favoritesArray[0].object);
-          for(var i = 0; i < response.data.favoritesArray.length; i++){
-            controller.dataGroup.push(response.data.favoritesArray[i]);
-          };
-          console.log(controller.dataGroup);
-          if(controller.dataGroup.length === response.data.favoritesArray.length){
-            controller.load = true;
-          }
-          console.log(controller.load);
 
-        },
-        function(response) { // failure
-        }
-      )
-    };
-
-
-//Function to Populate a user's favorites
+//Function to Populate similar images
   this.getAllSimilar = function(index){
     // clear existing data from dataGroup array:
     this.dataGroup = [];
@@ -197,11 +170,39 @@ app.controller('BaseController', ['$http', function($http) {
     }
   }
 
+  //Function to get a user's favorites
+      this.getFavorites = function(index){
+        // set load to FALSE:
+        this.load = false;
+        this.dataGroup = [];
+        $http({
+          method: 'GET',
+          url: '/users/showfavorites'
+        }).then(
+          function(response) { // success
+            console.log('app.js');
+            console.log(response.data.favoritesArray[0].object);
+            for(var i = 0; i < response.data.favoritesArray.length; i++){
+              controller.dataGroup.push(response.data.favoritesArray[i]);
+            };
+            console.log(controller.dataGroup);
+            if(controller.dataGroup.length === response.data.favoritesArray.length){
+              controller.load = true;
+            }
+            console.log(controller.load);
+
+          },
+          function(response) { // failure
+          }
+        )
+      };
+
+
 //Function to add favorite to user collection
   this.addFav = function(index){
     $http({
       method: 'PUT',
-      url: 'http://localhost:3000/users/favorites',
+      url: '/users/favorites',
       data: {
         item: this.dataGroup[index]
       }
@@ -216,11 +217,12 @@ app.controller('BaseController', ['$http', function($http) {
       }
     )
   };
+
 //Function to Log In
   this.logIn = function(){
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/sessions',
+      url: '/sessions',
       data: {
         username: this.userName,
         password: this.userPassword,
@@ -245,7 +247,7 @@ app.controller('BaseController', ['$http', function($http) {
   this.logOut = function(){
     $http({
       method: 'DELETE',
-      url: 'http://localhost:3000/sessions'
+      url: '/sessions'
     }).then(
       function(response){
         console.log('logged out');
@@ -261,7 +263,7 @@ app.controller('BaseController', ['$http', function($http) {
   this.addUser = function(){
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/users',
+      url: '/users',
       data: {
         userName: this.userName,
         userPassword: this.userPassword,
