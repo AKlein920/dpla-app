@@ -1,4 +1,5 @@
 # dpla-app
+![Endeavor Logo] (https://dpla-app.herokuapp.com/images/EndeavorLogoTransparent.png)
 <h1>Heroku to see the app deployed: https://dpla-app.herokuapp.com/</h1>
 
 UX/UI:
