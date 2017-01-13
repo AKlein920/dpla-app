@@ -1,5 +1,5 @@
 # dpla-app
-<center>![Endeavor Logo] (https://dpla-app.herokuapp.com/images/EndeavorLogoTransparent.png)</center>
+![Endeavor Logo] (https://dpla-app.herokuapp.com/images/EndeavorLogoTransparent.png)
 <h1>Please visit Endeavor on Heroku to see the app deployed: https://dpla-app.herokuapp.com/</h1>
 
 ===================================================================================
