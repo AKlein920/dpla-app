@@ -24,12 +24,11 @@ app.controller('BaseController', ['$http', function($http) {
     }
     // store result of randomizer function in a variable:
     this.random = this.randomize();
-    // push random result into queryGroup array:
-    this.queryGroup.push(this.random);
+
     // use the random result in an api call to dpla database to get images:
     $http({
       method: 'GET',
-      url: 'https://api.dp.la/v2/items?q=' + this.random + '&sourceResource.type=image&page_size=100&api_key=7c4f10ae79cee82c4372d03dba940c74'
+      url: 'https://api.dp.la/v2/items?q=' + this.random + '&sourceResource.type=image&provider.@id=NOT%20http://dp.la/api/contributor/mwdl&page_size=100&api_key=7c4f10ae79cee82c4372d03dba940c74'
     }).then(
       function(response) { // success
         // store a randomly pulled object from the response data in a variable:
@@ -64,6 +63,27 @@ app.controller('BaseController', ['$http', function($http) {
     )
 };
 
+//Function to get multiple items from different search queries
+  this.getAllData = function(){
+    this.dataGroup = [];
+    this.queryGroup = [];
+    // run a for loop 20 times:
+    for(var i = 0; i < 20; i++){
+      // run the getData function 20 times:
+      this.getData();
+      // push random result into queryGroup array:
+      this.queryGroup.push(this.random);
+      // check length of dataGroup array; if >= 20, load is TRUE:
+      if(this.dataGroup.length >= 20){
+      this.load = true;
+    }
+  }
+
+  console.log(this.dataGroup);
+  console.log(this.load);
+  console.log('Query Group '+ this.queryGroup)
+};
+
 //Function to get a single item similar to clicked item
   this.getSimilar = function(index){
     // set load to FALSE:
@@ -75,7 +95,7 @@ app.controller('BaseController', ['$http', function($http) {
     // api call using the ONE value to get associated images from dpla:
     $http({
       method: 'GET',
-      url: 'https://api.dp.la/v2/items?q=' + this.query + '&sourceResource.type=image&page_size=100&api_key=7c4f10ae79cee82c4372d03dba940c74'
+      url: 'https://api.dp.la/v2/items?q=' + this.query + '&sourceResource.type=image&provider.@id=NOT%20http://dp.la/api/contributor/mwdl&page_size=100&api_key=7c4f10ae79cee82c4372d03dba940c74'
     }).then(
       function(response) { // success
         // store a randomly pulled object from the response data in a variable:
@@ -83,6 +103,22 @@ app.controller('BaseController', ['$http', function($http) {
         // store the randomly pulled object's image URL in a variable:
         controller.similarImage = controller.similarItem.object;
         // push the randomly pulled object into dataGroup array:
+        if (controller.similarItem === undefined) {
+          // pull another randomly pulled object:
+          controller.similarItem = response.data.docs[Math.floor(Math.random()*100)];
+          // if the object exists but the object property is undefined,
+        } else if (controller.similarItem.object === undefined) {
+          // pull another randomly pulled object:
+          controller.similarItem = response.data.docs[Math.floor(Math.random()*100)];
+          // if the object's 'object' property exists (image URL),
+        } else if (controller.similarItem.object) {
+          // set it to a variable:
+          controller.similarImage = controller.similarItem.object;
+          // if the object's object property is an array:
+        } else if (controller.similarItem.object.length > 1) {
+          // store the FIRST value (image URL) in a variable:
+          controller.similarImage = controller.similarItem.object[0]
+        };
         controller.dataGroup.push(controller.similarItem);
         // load is TRUE if the length of dataGroup array is greater than or equal to 20:
         if(controller.dataGroup.length >= 20){
@@ -94,26 +130,6 @@ app.controller('BaseController', ['$http', function($http) {
       }
     )
   };
-
-
-//Function to get multiple items from different search queries
-  this.getAllData = function(){
-    this.dataGroup = [];
-    this.queryGroup = [];
-    // run a for loop 20 times:
-    for(var i = 0; i < 20; i++){
-      // run the getData function 20 times:
-      this.getData();
-      // check length of dataGroup array; if >= 20, load is TRUE:
-      if(this.dataGroup.length >= 20){
-      this.load = true;
-    }
-  }
-
-  console.log(this.dataGroup);
-  console.log(this.load);
-  console.log('Query Group '+ this.queryGroup)
-};
 
 // Function to get multiple items similar to clicked item:
   this.getAllSimilar = function(index){

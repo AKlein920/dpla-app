@@ -33,9 +33,6 @@ var User = require('./models/users.js');
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-var favoritesController = require('./controllers/FavoritesController.js');
-app.use('/favorites', favoritesController);
-
 var sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
 
