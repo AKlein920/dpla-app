@@ -1,11 +1,11 @@
 # dpla-app
-![Endeavor Logo] (https://dpla-app.herokuapp.com/images/EndeavorLogoTransparent.png)
-<h1>Heroku to see the app deployed: https://dpla-app.herokuapp.com/</h1>
+<center>![Endeavor Logo] (https://dpla-app.herokuapp.com/images/EndeavorLogoTransparent.png)
+<h1>Please visit Endeavor on Heroku to see the app deployed: https://dpla-app.herokuapp.com/</h1></center>
 
+===================================================================================
 UX/UI:
 Initial color palette: http://wagnermediaworks.com/wp-content/uploads/2017/01/canoe-color-palette-with-pic.png
 
-===================================================================================
 Logo Possiblities:
 http://wagnermediaworks.com/wp-content/uploads/2017/01/Endeavor-Lion-1.png
 http://wagnermediaworks.com/wp-content/uploads/2017/01/endeavor-Mountain-1.png
